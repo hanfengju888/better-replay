@@ -1,12 +1,7 @@
-# FastTester： 快速生成测试用例进行测试
+# better-replay： 基于mitmdump的录制回放测试脚本
 ### 简介
 利用日常功能测试(实际也调用API)通过代理获取到API的请求与响应信息,将这些请求信息进行流量回放/锲约测试或快速生成用例,
 可通过人工进行修改参数化提取、变量引用、断言等形成API自动化测试用例！
-
-**项目地址：** 看官~请记得给个**star**呗？
-
- [github](https://github.com/git-gsxl/FastTester.git)  
- [gitee](https://gitee.com/qq772262624/FastTester.git)
 
 ---
 ### 流程图(设计思路)
@@ -18,9 +13,8 @@
 
 1.clone
 
- github：`git clone https://github.com/git-gsxl/FastTester.git`
+ github：`git clone https://github.com/hanfengju888/better-replay.git`
 
- gitee：`git clone https://gitee.com/qq772262624/FastTester.git`
 
 2.pip install：`pip install -r requirements.txt -i https://pypi.douban.com/simple`
 
