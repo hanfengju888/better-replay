@@ -6,7 +6,7 @@ atomicwrites==1.4.1
 attrs==22.1.0
 blinker==1.4
 Brotli==1.0.9
-certifi==2022.9.24
+certifi==2022.12.7
 cffi==1.15.1
 charset-normalizer==2.0.12
 click==7.1.2
