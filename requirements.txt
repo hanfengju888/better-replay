@@ -39,7 +39,7 @@ mitmproxy==5.0.0
 packaging==21.3
 passlib==1.7.4
 pluggy==1.0.0
-protobuf==3.10.0
+protobuf==3.18.3
 publicsuffix2==2.20191221
 py==1.11.0
 pyasn1==0.4.8
