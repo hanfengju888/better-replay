@@ -1,3 +1,4 @@
+import logging
 import os
 from configparser import ConfigParser
 from model.crud_case import db_select
@@ -70,6 +71,7 @@ def  get_data(param, db_conf, domain, play_type=None):
     for test in testers:
         for host, value in test.items():
             hosts.append(host)
+            print(host,play_type)
             if play_type:db_data = db_select(host, domain, gray=gray)
             else:db_data = db_select(host, domain, db_model=PPlFormal, gray=gray)
             if not db_data:
@@ -78,7 +80,9 @@ def  get_data(param, db_conf, domain, play_type=None):
             if value:
                 collects = value.pop('collects', None)
                 value['url'] = host + value['url']
+                print(value['url'])
                 status_code, response, result = h.http(value)
+                print(status_code,response,result)
                 log.info(f'--->：域名：{host}，登录结果：{response}')
                 cookie = result.cookies.get_dict()
                 if cookie: add_replace_dict.update(cookie)
@@ -111,6 +115,7 @@ def pytest_generate_tests(metafunc):
     if init == 'true':
         models.Base.metadata.create_all(dbBase.engine)
         pytest.exit('-----------------> 新建表结构成功 <-----------------', returncode=1)
+
     # 判断是否是test_playback.py
     python_file = variables.pop('python_file', None)
     if not isinstance(param, dict): param = {}
@@ -118,6 +123,7 @@ def pytest_generate_tests(metafunc):
         # 判断是否先读取txt文件用例入库
         proj_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         if read_txt == 'true':   # 用例入库
+            log.debug(os.path.join(proj_path, 'app'))
             msg = app_txt_for(dir_path=os.path.join(proj_path, 'app'), key=key)
             pytest.exit(f'-----------------> {msg} <-----------------', returncode=1)
         # 切割 env 参数，db查询环境配置

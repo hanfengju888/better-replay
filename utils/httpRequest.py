@@ -460,6 +460,7 @@ class Http:
             # 过滤接口，比如退出登录，重新登录
             url = request_data.get('url')
             host, path, query, uri = Http().http_split_url(url, split_url_handle)
+            print(host, path, query, uri)
             if path in str(filter_path): return 0
             request_data['host'] = host
             request_data['uri'] = uri
@@ -467,6 +468,7 @@ class Http:
             request_data['query'] = query
             # 过滤返参code是否符合要求
             if not response.get('ppl_response'):
+                print(filter_code)
                 if filter_code:
                     for k, v in filter_code.items():
                         err_code, ret_code = True, response.get(k)

@@ -1,4 +1,6 @@
 import re
+from venv import logger
+
 from model.crud_case import *
 from utils.httpRequest import Http
 from utils.jsonSchema import loads
@@ -66,10 +68,12 @@ def app_txt_for(file=None, db=None, dir_path=None, key=None):
                 # 定制化的 request_data,不符合就下一条数据
                 request_data = h.http_filter_data(request_data, filter_path, filter_code,
                                                   filter_headers, split_url_handle)
+                print(request_data)
                 if not request_data: continue
                 request_data = h.http_default_data(request_data)
                 request_data = app_env_gray(request_data, re_list)
                 # 数据库插入
+                print(request_data)
                 db_insert_api(request_data)
                 count += 1
             if not line: break

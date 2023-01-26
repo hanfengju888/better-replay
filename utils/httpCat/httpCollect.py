@@ -38,6 +38,7 @@ def loads(txt):
 
 def response(flow):
     # 加上过滤条件
+    print(flow.request.host)
     if flow.request.host in hosts and str(flow.response.status_code)[0] in ['2', '3']:
         request_data, headers = {}, {}
         # 请求信息组装
