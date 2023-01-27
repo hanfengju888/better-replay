@@ -4,6 +4,10 @@
 可通过人工进行修改参数化提取、变量引用、断言等形成API自动化测试用例！
 
 ---
+### 代码结构
+![图片](https://user-images.githubusercontent.com/116870381/215118591-3cde6314-254e-4480-857f-5c5cf18d4466.png)
+
+---
 ### 流程图(设计思路)
 ![图片](https://user-images.githubusercontent.com/116870381/215058582-765a3bcb-f219-4634-bf3e-58acd112c9fd.png)
 
