@@ -5,8 +5,7 @@
 
 ---
 ### 流程图(设计思路)
- \~_~ `不会画太粗糙了`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a6396f9d12c74f0ea9211ad2585028e0.png)
+![图片](https://user-images.githubusercontent.com/116870381/215058582-765a3bcb-f219-4634-bf3e-58acd112c9fd.png)
 
 ---
 ### 快速开始
@@ -25,21 +24,16 @@ cd tests
 pytest
 # Windows 可直接运行：`startCollect.cmd`
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1f7316887a7e4363ba36e557cfc6e7a0.png)
+![图片](https://user-images.githubusercontent.com/116870381/215059310-31a9f8ef-f745-4704-91ac-c27f9dc64c64.png)
+
 
 ---
 ## 一、接口用例集合获取
-### 方式一：[Fiddler](https://blog.csdn.net/qq_42675140/article/details/127349890 "Fiddler")
 
-1、将项目下`utils/httpCat/fiddler.txt`复制文本粘贴,FiddlerScript
-
-2、更改为符合自己业务领域配置,是项目绝对路径`app`目录,注意要用两个扛`\\`
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bef7d987ec8f4f02a97f8dcea3b2aa31.png)
-### 方式二：[mitmproxy](https://blog.csdn.net/qq_42675140/article/details/125128261 "mitmproxy")
+### [mitmproxy](https://blog.csdn.net/qq_42675140/article/details/125128261 "mitmproxy")
 1、将项目下`utils/httpCat/config.ini`过滤域名改为自己需要配置的域名以及业务领域
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/04bafc7e55964aa9a22909fa4c34f19e.png)
+![图片](https://user-images.githubusercontent.com/116870381/215059555-b6f5941b-2218-4823-a165-1337934853b2.png)
 
 2、需要配置代理证书等,详看[mitmproxy使用文档](https://blog.csdn.net/qq_42675140/article/details/125128261 "mitmproxy使用文档")
 
@@ -49,7 +43,7 @@ pytest
 ### 结合以上两种方式
 1、你会得到：xxx.txt 文件
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2657de42f56a47acae9eaf257c15e6d1.png)
+![图片](https://user-images.githubusercontent.com/116870381/215059430-f2238c16-3a1e-433c-9b40-decc419a35b0.png)
 
 2、如需要用例入库,则执行命令行：
 ```shell
