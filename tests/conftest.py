@@ -71,7 +71,6 @@ def  get_data(param, db_conf, domain, play_type=None):
     for test in testers:
         for host, value in test.items():
             hosts.append(host)
-            print(host,play_type)
             if play_type:db_data = db_select(host, domain, gray=gray)
             else:db_data = db_select(host, domain, db_model=PPlFormal, gray=gray)
             if not db_data:
@@ -131,22 +130,20 @@ def pytest_generate_tests(metafunc):
         domain, env, play = env_list[0], env_list[1], None
         if 'playback' in python_file: play = True
         db_conf = db_select(domain=domain, env=env, conf_type=1)
-        # db 获取用例
+        #流量回放,从数据库中读取用例 db 获取用例
         all_data, paths, hosts = get_data(param, db_conf, domain, play)
         # 最后写入 environment.properties 文件
         txt = f'Tested={domain}-{env}\nHost={hosts}\nparam={dumps(param)}\n'
-        txt += 'Author=PPL\nBlog=https://blog.csdn.net/qq_42675140'
+        txt += 'Author=better\n'
     else:
         # 流量回放，读取文件数据
         all_data, paths, file_list = app_pytest_txt(file_path)
-        print(all_data)
-        print(paths)
-        print(file_list)
         # 最后写入 environment.properties 文件
         txt = f'file_list={file_list}\nexplain=This is the read file use case test\n'
-        txt += 'Author=PPL\nBlog=https://blog.csdn.net/qq_42675140'
+        txt += 'Author=better\n'
     if not all_data: pytest.exit('-----------------> 用例为空！ <-----------------', returncode=1)
     # 参数化
+    log.info(metafunc.fixturenames)
     if "param" in metafunc.fixturenames:
         metafunc.parametrize("param", all_data, ids=paths, scope="function")
     with open('allure/report/environment.properties', 'w')as f:

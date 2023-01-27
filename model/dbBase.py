@@ -8,7 +8,7 @@ from utils.jsonSchema import dumps
 def get_db_file():
     """ sqlite使用 """
     pwd = os.getcwd()
-    db_name = 'fastTester.db'
+    db_name = 'betterReplay.db'
     db_path = os.path.join(pwd, 'model', db_name)
     if not os.path.exists(db_path):
         pwd = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
