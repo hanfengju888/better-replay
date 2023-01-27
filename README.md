@@ -8,6 +8,11 @@
 ![图片](https://user-images.githubusercontent.com/116870381/215058582-765a3bcb-f219-4634-bf3e-58acd112c9fd.png)
 
 ---
+### 原理及过程说明
+1.开启mitmdump,指定执行特定脚本(httpCollect.py),将符合过滤条件的请求及对应响应写入到app目录下按照当时时间生成的txt文件中
+2.重写pytest中的conftest.py文件,对里面的 pytest_generate_tests方法重写,
+
+---
 ### 快速开始
 
 1.clone
