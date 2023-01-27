@@ -10,7 +10,10 @@
 ---
 ### 原理及过程说明
 1.开启mitmdump,指定执行特定脚本(httpCollect.py),将符合过滤条件的请求及对应响应写入到app目录下按照当时时间生成的txt文件中
-2.重写pytest中的conftest.py文件,对里面的 pytest_generate_tests方法重写,
+
+2.重写pytest中的`conftest.py`文件,对里面的 `pytest_generate_tests`方法重写,通过`config = metafunc.config,config.getoption('--read_txt')`获取额外的参数,根据设置情况执行初始化数据库,用例入库,还是执行对应文件或库中用例
+
+3.用例执行时会执行`test_playback.py`里面的`test_playback`方法,方法中会根据参数选择执行库中或app目录下的文件,包含步骤:开始时调用ppl_config中的登录接口,获取cookie并放入请求头中,发起请求,执行断言
 
 ---
 ### 快速开始
@@ -56,8 +59,11 @@ cd test
 pytest --read_txt=true
 ```
 另外可能需要进行数据库连接配置`model/dbBase.py`,默认为`sqlite`
+
 数据库表如下:
+
 ![图片](https://user-images.githubusercontent.com/116870381/215059837-9c0ddfd7-bc0b-4e5e-a4bc-0357a5e9e264.png)
+
 ![图片](https://user-images.githubusercontent.com/116870381/215059979-1a1e3b73-8110-4a25-a675-bfd89644414b.png)
 
 
@@ -241,7 +247,8 @@ Faker 更多请查阅官方文档：https://faker.readthedocs.io/en/stable/local
 ## 六、数据库config配置说明
 默认使用`sqlite`,一般只需要连接`sqlite`更改`下面 1 账号环境配置`信息即可
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8334b9dc56b0470eb2b85b2dd499d829.png)
+![图片](https://user-images.githubusercontent.com/116870381/215116767-de93b6dd-0d51-4779-80e2-bdd460066b8a.png)
+
 ### 1.账号环境配置
       1) gray：默认就好,一般会使用如：AB测试模型使用,定制化区分环境
       2) Tester：登录获取token或cookie初始化,可配置多个登录信息,如下有两种例子：
@@ -301,4 +308,4 @@ Faker 更多请查阅官方文档：https://faker.readthedocs.io/en/stable/local
            "split_url_handle":{}
        }
 
-## 如有建议/疑问请联系我：https://blog.csdn.net/qq_42675140
+
