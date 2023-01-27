@@ -51,13 +51,17 @@ cd test
 pytest --read_txt=true
 ```
 另外可能需要进行数据库连接配置`model/dbBase.py`,默认为`sqlite`
+数据库表如下:
+![图片](https://user-images.githubusercontent.com/116870381/215059837-9c0ddfd7-bc0b-4e5e-a4bc-0357a5e9e264.png)
+![图片](https://user-images.githubusercontent.com/116870381/215059979-1a1e3b73-8110-4a25-a675-bfd89644414b.png)
+
 
 ---
 ## 二、执行测试
 命令行参数说明(部分可在pytest.ini下默认配置),与pytest框架一致,并且新增以下参数：
-1) --env：查询业务领域=ppl及环境=test的用例
+1) --env：查询业务领域=better及环境=test的用例
    
-         如：--env=ppl,test                
+         如：--env=better,test                
 2) --param：附加将version参数替换为1或追加
    
          如：--param={\"version\":\"1\"}
